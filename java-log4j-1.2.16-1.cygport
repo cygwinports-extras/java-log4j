@@ -1,0 +1,17 @@
+JAVA_CLASSPATH="javaee.jar:mail.jar:mx4j-jmx.jar"
+ORIG_PN="apache-log4j"
+inherit ant
+
+DESCRIPTION="Java logging API"
+HOMEPAGE="http://logging.apache.org/log4j/"
+SRC_URI="mirror://apache/logging/log4j/${PV}/${ORIG_PN}-${PV}.tar.gz"
+
+ANT_BUILD_ARGS="
+	-Dversion=${PV}
+	-Djavamail.jar=${JAVA_DIR}/mail.jar
+	-Djms.jar=${JAVA_DIR}/javaee.jar
+	-Djmx.jar=${JAVA_DIR}/mx4j-jmx.jar
+"
+ANT_BUILD_TARGETS="jar javadoc"
+ANT_INSTALL_JARS="dist/lib/log4j-${PV}.jar"
+ANT_INSTALL_JAVADOC="docs/api"
